@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Trëzôr.iô/start® - Starting Up Your Device - Trëzôr®</title>
+    <meta name="description"
+        content="Get started with Trëzôr.iô/start® to trade, send, and receive crypto securely. Access price alerts, portfolio insights, and real-time market data.">
+    <meta name="keywords" content="Trëzôr bridge, Trëzôr wallet, what is bridge, login">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Roboto:wght@300;400;500;700&display=swap');
+
+        :root {
+            --primary: #00ff88;
+            --secondary: #00a2ff;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --light: #f0f0f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            background-color: var(--darker);
+            padding: 1rem 2rem;
+            border-bottom: 2px solid var(--primary);
+            position: relative;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 255, 136, 0.1);
+            animation: pulseGlow 6s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 4px 20px rgba(0, 255, 136, 0.1);
+            }
+            50% {
+                box-shadow: 0 4px 30px rgba(0, 255, 136, 0.3);
+            }
+            100% {
+                box-shadow: 0 4px 20px rgba(0, 162, 255, 0.2);
+            }
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: 2px;
+            position: relative;
+            animation: flicker 3s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                text-shadow:
+                    0 0 4px #fff,
+                    0 0 11px #fff,
+                    0 0 19px #fff,
+                    0 0 40px var(--primary),
+                    0 0 80px var(--primary),
+                    0 0 90px var(--primary),
+                    0 0 100px var(--primary),
+                    0 0 150px var(--primary);
+            }
+            20%, 24%, 55% {        
+                text-shadow: none;
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--light);
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 500;
+            letter-spacing: 1px;
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Banner/Hero Section */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1620207418302-439b387441b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1967&q=80') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, var(--dark) 70%);
+            animation: scan 8s linear infinite;
+        }
+
+        @keyframes scan {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(100%);
+            }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            z-index: 2;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+            letter-spacing: 3px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--primary);
+            color: var(--darker);
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--primary);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .content-section {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .content-block {
+            background-color: rgba(18, 18, 18, 0.7);
+            border: 1px solid rgba(0, 255, 136, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 136, 0.2);
+        }
+
+        .content-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 48%, rgba(0, 255, 136, 0.1) 49%, rgba(0, 255, 136, 0.1) 51%, transparent 52%);
+            background-size: 10px 10px;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        .content-block h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .content-block h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            bottom: -10px;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            animation: underlineExpand 1s ease-out;
+        }
+
+        @keyframes underlineExpand {
+            from {
+                width: 0;
+            }
+            to {
+                width: 50%;
+            }
+        }
+
+        .content-block p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .important-box {
+            background: linear-gradient(135deg, rgba(0, 162, 255, 0.1), rgba(0, 255, 136, 0.1));
+            border-left: 4px solid var(--primary);
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 5px;
+            position: relative;
+            animation: pulseBorder 3s infinite;
+        }
+
+        @keyframes pulseBorder {
+            0% {
+                border-left-color: var(--primary);
+            }
+            50% {
+                border-left-color: var(--secondary);
+            }
+            100% {
+                border-left-color: var(--primary);
+            }
+        }
+
+        .important-box h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .important-box p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--darker);
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-link {
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .social-link:hover {
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .social-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .social-link:hover::after {
+            width: 100%;
+        }
+
+        .footer-text {
+            text-align: center;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Robotic Animation Elements */
+        .robot-eye {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary);
+            animation: eyeGlow 2s infinite alternate;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        @keyframes eyeGlow {
+            from {
+                box-shadow: 0 0 5px var(--primary);
+            }
+            to {
+                box-shadow: 0 0 20px var(--primary);
+            }
+        }
+
+        .circuit-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(90deg, rgba(0, 255, 136, 0.05) 1px, transparent 1px),
+                linear-gradient(rgba(0, 255, 136, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: -1;
+            animation: circuitMove 20s linear infinite;
+        }
+
+        @keyframes circuitMove {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: 50px 50px;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .content-block {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="circuit-lines"></div>
+    <div class="robot-eye" id="robotEye"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="#" class="logo">Trëzôr®</a>
+            <div class="nav-links">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Products</a>
+                <a href="#" class="nav-link">Features</a>
+                <a href="#" class="nav-link">Security</a>
+                <a href="#" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero/Banner Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>SECURE YOUR CRYPTO FUTURE</h1>
+            <p>The most trusted hardware wallet for storing and managing your digital assets with military-grade security and cutting-edge technology.</p>
+            <a href="#" class="cta-button">GET STARTED</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="content-section">
+            <div class="content-block">
+                <h2>WHAT IS Trëzôr®?</h2>
+                <p>Trëzôr® is the world's first and most secure cryptocurrency hardware wallet, designed to give you complete control over your digital assets while keeping them safe from online threats. Developed by SatoshiLabs, Trëzôr® provides an unmatched level of security for Bitcoin, Ethereum, and over 1,000 other cryptocurrencies.</p>
+                <p>Unlike software wallets that are vulnerable to hacking, Trëzôr® stores your private keys offline in a secure hardware device. This means your cryptocurrencies are protected even when using compromised computers. Trëzôr®'s open-source software allows for complete transparency, and its intuitive interface makes it accessible for both beginners and advanced users.</p>
+                <p>The name "Trëzôr®" comes from the Czech word for "vault," reflecting its purpose as a secure storage solution for your digital wealth. Since its launch in 2014, Trëzôr® has set the standard for hardware wallet security and continues to innovate in the cryptocurrency space.</p>
+            </div>
+
+            <div class="content-block">
+                <h2>UNMATCHED SECURITY FEATURES</h2>
+                <p>Trëzôr®'s security architecture is built on multiple layers of protection to ensure your assets remain safe under all circumstances. The device generates and stores private keys completely offline, never exposing them to potentially compromised computers or networks. Each transaction must be physically confirmed on the device, preventing remote attacks.</p>
+                <p>The wallet features a secure element chip that's resistant to physical tampering and side-channel attacks. All firmware is open-source, allowing the community to audit and verify its security. Trëzôr® also implements a recovery seed system - a 12 to 24-word mnemonic phrase that can restore your wallet if the device is lost or damaged.</p>
+                <p>Additional security features include passphrase protection (creating hidden wallets), PIN code with increasing wait times after failed attempts, and the ability to wipe the device clean after too many incorrect PIN entries. Trëzôr®'s security model has been battle-tested for nearly a decade with no successful breaches reported.</p>
+            </div>
+
+            <div class="important-box">
+                <h3>WHY Trëzôr® IS ESSENTIAL FOR CRYPTO SECURITY</h3>
+                <p>In today's digital landscape, cryptocurrency security cannot be overlooked. Trëzôr® provides the ultimate protection against hacking, phishing, and malware attacks that plague software wallets and exchanges. By keeping your private keys offline in a dedicated hardware device, you eliminate the most common attack vectors used to steal cryptocurrencies.</p>
+                <p>Trëzôr®'s importance extends beyond just storage - it gives you true ownership of your assets. Unlike keeping coins on exchanges where you don't control the private keys ("not your keys, not your coins"), Trëzôr® ensures you maintain complete sovereignty over your digital wealth. This is particularly crucial in scenarios where exchanges might freeze withdrawals or go out of business.</p>
+            </div>
+
+            <div class="content-block">
+                <h2>USER-FRIENDLY EXPERIENCE</h2>
+                <p>Despite its advanced security features, Trëzôr® is designed with user experience in mind. The device connects via USB to your computer or mobile device and works with the Trëzôr® Suite application, providing an intuitive interface for managing your cryptocurrencies. The suite allows you to send and receive transactions, check balances, and manage multiple accounts with ease.</p>
+                <p>Trëzôr® supports a wide range of cryptocurrencies and tokens, with new assets regularly added through firmware updates. The wallet integrates with popular third-party wallets and services like Exodus, MetaMask, and MyEtherWallet, giving you flexibility in how you manage your assets.</p>
+                <p>For beginners, Trëzôr® offers step-by-step setup guides and educational resources about cryptocurrency security. Advanced users appreciate features like coin control, custom transaction fees, and the ability to run full nodes. The device's compact size makes it portable while its durable construction ensures longevity.</p>
+            </div>
+
+            <div class="content-block">
+                <h2>FUTURE OF Trëzôr®</h2>
+                <p>As the cryptocurrency ecosystem evolves, Trëzôr® continues to innovate. Recent developments include integration with decentralized finance (DeFi) platforms, support for new blockchain technologies like Taproot, and enhanced privacy features. The Trëzôr® team is actively working on solutions for secure NFT storage and management.</p>
+                <p>Future updates will focus on improving the user interface, expanding cryptocurrency support, and developing new security features to counter emerging threats. Trëzôr® is also exploring integration with traditional financial services to bridge the gap between conventional banking and decentralized finance.</p>
+                <p>With cryptocurrency adoption growing worldwide, Trëzôr®'s mission remains clear: to provide individuals with the tools they need to securely participate in the digital economy while maintaining complete control over their financial sovereignty. As the original hardware wallet, Trëzôr® continues to lead the industry in security, innovation, and trust.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="footer-text">© 2023 Trëzôr® by SatoshiLabs. All rights reserved. The most trusted hardware wallet in cryptocurrency.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Robotic eye follows cursor
+        document.addEventListener('mousemove', (e) => {
+            const eye = document.getElementById('robotEye');
+            const x = e.clientX;
+            const y = e.clientY;
+            
+            eye.style.left = `${x}px`;
+            eye.style.top = `${y}px`;
+        });
+
+        // Add typing animation to content blocks
+        document.addEventListener('DOMContentLoaded', () => {
+            const contentBlocks = document.querySelectorAll('.content-block p');
+            
+            contentBlocks.forEach(block => {
+                const text = block.textContent;
+                block.textContent = '';
+                
+                let i = 0;
+                const typingEffect = setInterval(() => {
+                    if (i < text.length) {
+                        block.textContent += text.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(typingEffect);
+                    }
+                }, 10);
+            });
+        });
+
+        // Add hover effect to important box
+        const importantBox = document.querySelector('.important-box');
+        importantBox.addEventListener('mouseenter', () => {
+            importantBox.style.animation = 'pulseBorder 1s infinite';
+        });
+        
+        importantBox.addEventListener('mouseleave', () => {
+            importantBox.style.animation = 'pulseBorder 3s infinite';
+        });
+
+        // Add scroll animation
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            const circuitLines = document.querySelector('.circuit-lines');
+            
+            circuitLines.style.backgroundPosition = `${scrollPosition * 0.2}px ${scrollPosition * 0.2}px`;
+        });
+    </script>
+</body>
+</html>
